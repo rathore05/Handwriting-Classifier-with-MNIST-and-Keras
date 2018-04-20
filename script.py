@@ -36,5 +36,14 @@ model.add(Dense(num_of_classes,activation='softmax'))
 model.compile(loss=categorical_crossentropy,
               metrics=['accuracy'],
               optimizer=Adadelta())
+model.fit(features_train,labels_train,
+          batch_size=32,
+          epochs=10,
+          verbose=1,
+          validation_data=(features_test,labels_test))
+
+score=model.evaluate(features_test,labels_test,verbose=0)
+model.save('/home/slytherin/Documents/ML/Udemy/Handwriting Classifier/model.h5')
+
 
 
